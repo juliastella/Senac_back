@@ -6,6 +6,13 @@ class Conta_corrente():
         self.nomeTitular = nomeTitular
         self.saldoCorrente = saldoCorrente
 
+#get e set para o atributo saldoCorrente:
+    def get_saldoCorrente(self):
+        return self._saldoCorrente
+    def set_saldoCorrente(self, novo_saldoCorrente):
+        self._saldoCorrente = novo_saldoCorrente
+
+# get e set para o atributo saldoCorrente:
     def sacar(self, valorDeposito):
         self.saldoCorrente -= valorDeposito
     def depositar(self, valorDeposito):
@@ -29,13 +36,23 @@ pessoa1.aplicar(investimentoIn)
 print(pessoa1.saldoCorrente)"""
 # Area de teste para verificar o funcionamento das classe:
 class Conta_poupaca(Conta_corrente):
-    def __init__(self,saldoPoupaca,numeroConta,nomeTitular):
-        super().__init__(numeroConta, nomeTitular) #erro no parentes;
+    def __init__(self,saldoPoupaca,numeroConta,nomeTitular,saldoCorrente):
+        super().__init__(numeroConta, nomeTitular, saldoCorrente)
         self.saldoPoupaca = saldoPoupaca
+        pass
 
+# get e set para o atributo saldoCorrente:
+    def get_saldoPoupaca(self):
+        return self._saldoPoupaca
+
+    def set_saldoCorrente(self, novo_saldoPoupanca):
+        self._saldoCorrente = novo_saldoPoupanca
+
+# Metodo da função  conta poupaça:
     def resgatar(self):
         self.saldoPoupaca -= self.saldoCorrente
 
-pessoa2 = Conta_poupaca(1234,"júlia", 50)
+#Teste do metodo:
+pessoa2 = Conta_poupaca(1234,"júlia", 50, 200)
 pessoa2.resgatar()
 print(pessoa2.saldoCorrente, "E", pessoa2.saldoPoupaca)
