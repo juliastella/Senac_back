@@ -2,6 +2,8 @@
 import random
 import time
 
+import self as self
+
 
 # Bibliotecas:
 
@@ -11,7 +13,7 @@ class Conta_corrente():
     def __init__(self, numeroConta, nomeTitular, saldoCorrente):
         self.numeroConta = numeroConta
         self.nomeTitular = nomeTitular
-        self.__saldoCorrente = saldoCorrente
+        self.__saldoCorrente = 0
 
     # get e set para o atributo saldoCorrente:
     def get_saldoCorrente(self):
@@ -29,6 +31,7 @@ class Conta_corrente():
 
     def aplicar(self, investimentoIn):
         self.__saldoCorrente -= investimentoIn
+        self.__saldoPoupaca += investimentoIn
 
 
 # Area de teste para verificar o funcionamento das classe:
@@ -48,7 +51,7 @@ print(pessoa1.saldoCorrente)"""
 class Conta_poupaca(Conta_corrente):
     def __init__(self, saldoPoupaca, numeroConta, nomeTitular, saldoCorrente):
         super().__init__(numeroConta, nomeTitular, saldoCorrente)
-        self.__saldoPoupaca = saldoPoupaca
+        self.__saldoPoupaca = 0
 
     # get e set para o atributo saldoCorrente:
     def get_saldoPoupaca(self):
@@ -80,7 +83,7 @@ deposito = None
 
 # Menu:
 while True:
-    print("Bem Vindo ao Senac Bank")
+    print("\nBem Vindo ao Senac Bank")
     print(""" 
 
         +------------------------------+
@@ -88,14 +91,16 @@ while True:
         |                              |
         | [1] Criar conta              |
         | [2] Mostrar dados            |
-        | [3] Acessar Conta Corrente   | 
-        | [4] Acessar Conta Poupança   |
-        | [5] Sair                     |
+        | [3] Aplicar                  |
+        | [4] Resgatar                 |
+        | [5] Sacar                    | 
+        | [6] Mostrar dados            |
+        | [7] Sair                     |
         |                              | 
         +-------------------------------+                               
                                          \n""")
 
-    opcao = input("Qual a opção que você deseja escolher: ")
+    opcao = int(input("Qual a opção que você deseja escolher: "))
 
     # Funções base:
     def validaIdade(idade):
@@ -108,7 +113,6 @@ while True:
             print('\nNome: ', nome)
 
     # Opção 01: criar conta:
-
     if opcao == 1:
         nome = str(input('\nDigite seu nome: '))
         idade = int(input('Digite sua idade: '))
@@ -116,20 +120,41 @@ while True:
         validaIdade(idade)
 
         while True:
-            senha = int(input('Digite uma senha de 4 digítos: '))
+            print("\nPara concluir o cadastro você precisa deposita o valor minimo de 20!\n")
+            deposito = float(input("\nFaço o seu deposito: \n"))
+            senha = int(input('\nDigite uma senha de 4 digítos: \n'))
 
-            if len(str(senha)) != 4:
-                print("Digite uma senha de apenas 4 digítos, por favor!")
+            if len(str(senha)) != 4 and deposito >= 20.00:
+                if deposito >= 20.00:
+                  print("Digite uma senha de apenas 4 digítos e deposite o valor igual ou maior que R$ 20,00!")
                 continue
             else:
-                print("Senha cadastrada com sucesso!")
+                print("Senha cadastrada e deposito com sucesso!")
                 break
 
-        print("Para concluir o cadastro você precisa deposita o valor minimo de 20!")
-
-        deposito = float(input("Faço o seu deposito: "))
 
     elif opcao == 2:
-        print()
+    #Verificar como carregar isso:
+        deposito(deposito)
+
+# Terminar mostrar os dados:
+
+    elif opcao == 6:
+        print("\nOs seus dados no Senac Bank")
+        print(f""" 
+
+             +------------------------------+
+             |         -Senac Bank-         | 
+             |                              |
+             | [Nome] {nome}                |
+             | [Idade] {idade}              |
+             | [Número da conta] {num_conta}| 
+             +-------------------------------+                               
+                                              \n""")
+
+
+
+
+
     else:
         break
