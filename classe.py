@@ -11,24 +11,24 @@ class Conta_corrente():
     def __init__(self, numeroConta, nomeTitular, saldoCorrente):
         self.numeroConta = numeroConta
         self.nomeTitular = nomeTitular
-        self.saldoCorrente = saldoCorrente
+        self.__saldoCorrente = saldoCorrente
 
     # get e set para o atributo saldoCorrente:
     def get_saldoCorrente(self):
-        return self._saldoCorrente
+        return self.__saldoCorrente
 
     def set_saldoCorrente(self, novo_saldoCorrente):
-        self._saldoCorrente = novo_saldoCorrente
+        self.__saldoCorrente = novo_saldoCorrente
 
     # get e set para o atributo saldoCorrente:
     def sacar(self, valorDeposito):
-        self.saldoCorrente -= valorDeposito
+        self.__saldoCorrente -= valorDeposito
 
     def depositar(self, valorDeposito):
-        self.saldoCorrente += valorDeposito
+        self.__saldoCorrente += valorDeposito
 
     def aplicar(self, investimentoIn):
-        self.saldoCorrente -= investimentoIn
+        self.__saldoCorrente -= investimentoIn
 
 
 # Area de teste para verificar o funcionamento das classe:
@@ -48,19 +48,18 @@ print(pessoa1.saldoCorrente)"""
 class Conta_poupaca(Conta_corrente):
     def __init__(self, saldoPoupaca, numeroConta, nomeTitular, saldoCorrente):
         super().__init__(numeroConta, nomeTitular, saldoCorrente)
-        self._saldoPoupanca = None  # Teste para visualizar o funcionamneto;
-        self.saldoPoupaca = saldoPoupaca
+        self.__saldoPoupaca = saldoPoupaca
 
     # get e set para o atributo saldoCorrente:
     def get_saldoPoupaca(self):
-        return self._saldoPoupaca
+        return self.__saldoPoupaca
 
-    def set_saldoPoupanca(self, novo_saldoPoupanca):
-        self._saldoPoupanca = novo_saldoPoupanca
+    def set_saldoPoupanca(self, novo_saldoPoupaca):
+        self.__saldoPoupaca = novo_saldoPoupaca
 
     # Metodo da função  conta poupaça:
     def resgatar(self):
-        self.saldoPoupaca -= self.saldoCorrente
+        self.__saldoPoupaca -= self.__saldoCorrente
 
 
 # Teste do metodo:
@@ -129,3 +128,8 @@ while True:
         print("Para concluir o cadastro você precisa deposita o valor minimo de 20!")
 
         deposito = float(input("Faço o seu deposito: "))
+
+    elif opcao == 2:
+        print()
+    else:
+        break
