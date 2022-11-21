@@ -75,6 +75,9 @@ print(pessoa2.saldoCorrente, "E", pessoa2.saldoPoupaca)"""
 dicionario = {}
 nome = None
 idade = None
+senha = None
+num_conta = None
+deposito = None
 
 # Menu:
 while True:
@@ -110,7 +113,6 @@ while True:
     if opcao == 1:
         nome = str(input('\nDigite seu nome: '))
         idade = int(input('Digite sua idade: '))
-        senha = None
         num_conta = random.randint(100, 500)
         validaIdade(idade)
 
@@ -124,5 +126,6 @@ while True:
                 print("Senha cadastrada com sucesso!")
                 break
 
+        print("Para concluir o cadastro você precisa deposita o valor minimo de 20!")
 
-        print('O número da sua conta é: ', num_conta)
+        deposito = float(input("Faço o seu deposito: "))
