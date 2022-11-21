@@ -1,26 +1,10 @@
-import classe as bib
-import random
 
-# Vai ser feito o menu e todas as condicionais:
+while True:
+  senha = int(input('Digite uma senha de 4 digítos: '))
 
-# Armazenamento de dados:
-dicionario : {}
-nome = input("Digite seu nome: ")
-
-print("Bem Vindo ao Senac Bank")
-print(""" 
-
-        +------------------------------+
-        |         -Senac Bank-         | 
-        |                              |
-        | [1] Criar conta              |
-        | [2] Mostrar dados            |
-        | [3] Acessar Conta Corrente   | 
-        | [4] Acessar Conta Poupança   |
-        | [5] Sair                     |
-        |                              | 
-        +-------------------------------+                               
-                                         \n""")
-
-#
-
+  if len(str(senha)) != 4:
+    print("Digite uma senha de apenas 4 digítos, por favor!")
+    continue
+  else:
+      print("Senha cadastrada com sucesso!")
+      break
