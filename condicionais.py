@@ -35,6 +35,10 @@ class Conta_corrente():
         self.saldoCorrente -= investimentoIn
         self.saldoPoupaca += investimentoIn
 
+        print("+----------------------------------+")
+        print("| O aplicação efetuada com sucesso! |")
+        print("+----------------------------------+")
+
 
 class Conta_poupaca(Conta_corrente):
     def __init__(self, saldoPoupaca, numeroConta, nomeTitular, saldoCorrente):
