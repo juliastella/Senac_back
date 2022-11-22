@@ -31,7 +31,7 @@ class Conta_corrente():
 
     def aplicar(self, investimentoIn):
         self.__saldoCorrente -= investimentoIn
-        self.__saldoPoupaca += investimentoIn
+        """self.__saldoPoupaca += investimentoIn"""
 
 
 # Area de teste para verificar o funcionamento das classe:
@@ -110,8 +110,6 @@ while True:
             print('\nAguarde...')
             time.sleep(2.0)
 
-            print('\nNome: ', nome)
-
     # Opção 01: criar conta:
     if opcao == 1:
         nome = str(input('\nDigite seu nome: '))
@@ -133,9 +131,6 @@ while True:
                 break
 
 
-    elif opcao == 2:
-    #Verificar como carregar isso:
-        deposito(deposito)
 
 # Terminar mostrar os dados:
 
