@@ -32,13 +32,27 @@ class Conta_corrente():
         print("+----------------------------------+")
 
     def aplicar(self, investimentoIn):
-        self.saldoCorrente -= investimentoIn
-        self.saldoPoupaca += investimentoIn
+        saldoc = self.get_saldoCorrente()
+        saldop = self.get_saldoPoupaca()
+
+        if investimentoIn <= saldoc:
+            saldoc -= investimentoIn
+            saldop -= investimentoIn
+            self.set_saldoCorrente(saldoc)
+            self.set_saldoPoupanca(saldop)
 
         print("+----------------------------------+")
         print("| O aplicação efetuada com sucesso! |")
         print("+----------------------------------+")
 
+valorDeposito = float(input("Qual é o deposito? "))
+
+investimentoIn = float(input("Qual é o investimento? "))
+
+pessoa1 = Conta_corrente(1234,"júlia", 100)
+pessoa1.depositar(valorDeposito)
+pessoa1.sacar(valorDeposito)
+pessoa1.aplicar(investimentoIn)
 
 class Conta_poupaca(Conta_corrente):
     def __init__(self, saldoPoupaca, numeroConta, nomeTitular, saldoCorrente):
@@ -55,3 +69,7 @@ class Conta_poupaca(Conta_corrente):
     # Metodo da função  conta poupaça:
     def resgatar(self):
         self.__saldoPoupaca -= self.__saldoCorrente
+        print("+----------------------------------+")
+        print("| O resgate efetuada com sucesso!  |")
+        print("+----------------------------------+")
+
