@@ -1,18 +1,15 @@
 # Bibliotecas:
 import random
 import time
-
-import self as self
-
-
 # Bibliotecas:
 
 # Código com as classes:
 
 class Conta_corrente():
-    def __init__(self, numeroConta, nomeTitular, saldoCorrente, saldoPoupaca):
+    def __init__(self, numeroConta, nomeTitular, saldoCorrente, saldoPoupaca, senha):
         self.numeroConta = numeroConta
         self.nomeTitular = nomeTitular
+        self.senha = senha
         self.__saldoCorrente = 0
         self.__saldoPoupaca = 0
 
@@ -64,18 +61,18 @@ class Conta_corrente():
         print("| O aplicação efetuada com sucesso! |")
         print("+----------------------------------+")
 
-valorDeposito = float(input("Qual é o deposito? "))
+"""valorDeposito = float(input("Qual é o deposito? "))
 
 investimentoIn = float(input("Qual é o investimento? "))
 
 pessoa1 = Conta_corrente(1234,"júlia", 100, 50)
 pessoa1.depositar(valorDeposito)
 pessoa1.sacar(valorDeposito)
-pessoa1.aplicar(investimentoIn)
+pessoa1.aplicar(investimentoIn)"""
 
 class Conta_poupaca(Conta_corrente):
-    def __init__(self, saldoPoupaca, numeroConta, nomeTitular, saldoCorrente):
-        super().__init__(numeroConta, nomeTitular, saldoCorrente, saldoPoupaca)
+    def __init__(self, saldoPoupaca, numeroConta, nomeTitular, saldoCorrente, senha):
+        super().__init__(numeroConta, nomeTitular, saldoCorrente, saldoPoupaca, senha)
 
     # Metodo da função  conta poupaça:
     def resgatar(self):
@@ -136,6 +133,8 @@ while True:
     if opcao == 1:
         nome = str(input('\nDigite seu nome: '))
         idade = int(input('Digite sua idade: '))
+
+        #validação de idade: pagando.
         num_conta = random.randint(100, 500)
         validaIdade(idade)
 
